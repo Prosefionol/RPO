@@ -15,13 +15,19 @@ project("fclient")
 # Gradle automatically packages shared libraries with your APK.
 
 add_library( # Sets the name of the library.
-             native-lib
+            native-lib
 
              # Sets the library as a shared library.
-             SHARED
+            SHARED
 
              # Provides a relative path to your source file(s).
-             native-lib.cpp )
+            native-lib.cpp )
+
+add_library(spdlog STATIC IMPORTED)
+set_target_properties(
+        spdlog PROPERTIES IMPORTED_LOCATION
+        /home/ilyalinux/RPO/libs/spdlog/build/x86/libspdlog.a
+)
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by
@@ -36,13 +42,24 @@ find_library( # Sets the name of the path variable.
               # you want CMake to locate.
               log )
 
+target_include_directories(
+        native-lib PUBLIC
+        /home/ilyalinux/RPO/libs/spdlog/spdlog/include
+)
+
 # Specifies libraries CMake should link to your target library. You
 # can link multiple libraries, such as libraries you define in this
 # build script, prebuilt third-party libraries, or system libraries.
 
-target_link_libraries( # Specifies the target library.
-                       native-lib
+#target_link_libraries( # Specifies the target library.
+                       #native-lib
 
                        # Links the target library to the log library
                        # included in the NDK.
-                       ${log-lib} )
+                       #${log-lib} )
+
+target_link_libraries(
+        native-lib
+        spdlog
+        ${log-lib}
+)

@@ -19,6 +19,9 @@ android {
                 cppFlags "-std=c++11"
             }
         }
+        ndk {
+            abiFilters"x86"
+        }
     }
 
     buildTypes {
