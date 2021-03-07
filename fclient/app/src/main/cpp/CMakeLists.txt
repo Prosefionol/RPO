@@ -26,7 +26,7 @@ add_library( # Sets the name of the library.
 add_library(spdlog STATIC IMPORTED)
 set_target_properties(
         spdlog PROPERTIES IMPORTED_LOCATION
-        /home/ilyalinux/RPO/libs/spdlog/build/x86/libspdlog.a
+        D:/RPO/RPO/libs/spdlog/build/x86/libspdlog.a
 )
 
 # Searches for a specified prebuilt library and stores the path as a
@@ -44,7 +44,7 @@ find_library( # Sets the name of the path variable.
 
 target_include_directories(
         native-lib PUBLIC
-        /home/ilyalinux/RPO/libs/spdlog/spdlog/include
+        D:/RPO/RPO/libs/spdlog/spdlog/include
 )
 
 # Specifies libraries CMake should link to your target library. You
