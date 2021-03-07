@@ -29,6 +29,12 @@ set_target_properties(
         D:/RPO/RPO/libs/spdlog/build/x86/libspdlog.a
 )
 
+add_library(mbedcrypto SHARED IMPORTED)
+set_target_properties(
+        mbedcrypto PROPERTIES IMPORTED_LOCATION
+        D:/RPO/RPO/libs/mbedtls/build/x86/library/libmbedcrypto.so
+)
+
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by
 # default, you only need to specify the name of the public NDK library
@@ -45,6 +51,7 @@ find_library( # Sets the name of the path variable.
 target_include_directories(
         native-lib PUBLIC
         D:/RPO/RPO/libs/spdlog/spdlog/include
+        D:/RPO/RPO/libs/mbedtls/mbedtls/include
 )
 
 # Specifies libraries CMake should link to your target library. You
@@ -61,5 +68,6 @@ target_include_directories(
 target_link_libraries(
         native-lib
         spdlog
+        mbedcrypto
         ${log-lib}
 )
