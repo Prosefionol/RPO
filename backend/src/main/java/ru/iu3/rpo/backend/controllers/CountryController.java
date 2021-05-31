@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import javax.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-//import ru.iu3.rpo.backend.models.Artist;
+import ru.iu3.rpo.backend.models.Artist;
 import ru.iu3.rpo.backend.models.Country;
 import ru.iu3.rpo.backend.repositories.CountryRepository;
 
@@ -22,7 +22,7 @@ public class CountryController {
     public List<Country> getAllCountries() {
         return countryRepository.findAll();
     }
-/*
+
     @GetMapping("/countries/{id}/artists")
     public ResponseEntity<List<Artist>> getCountryArtists(@PathVariable(value = "id") Long countryId){
         Optional<Country> cc = countryRepository.findById(countryId);
@@ -31,7 +31,7 @@ public class CountryController {
             return ResponseEntity.ok(cc.get().artists);
         }
         return ResponseEntity.ok(new ArrayList<Artist>());
-    }*/
+    }
 
     @PostMapping("/countries")
     public ResponseEntity<Object> createCountry(@Valid @RequestBody Country country){

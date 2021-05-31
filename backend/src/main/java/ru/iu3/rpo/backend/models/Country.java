@@ -1,10 +1,10 @@
 package ru.iu3.rpo.backend.models;
 
-//import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-//import java.util.ArrayList;
-//import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "countries")
@@ -22,7 +22,7 @@ public class Country {
     @Column(name = "name", nullable = false, unique = true)
     public String name;
 
-    /*@JsonIgnore
+    @JsonIgnore
     @OneToMany(mappedBy = "country")
-    //public List<Artist> artists = new ArrayList<Artist>();*/
+    public List<Artist> artists = new ArrayList<Artist>();
 }
