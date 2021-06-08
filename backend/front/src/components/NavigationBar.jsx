@@ -30,7 +30,7 @@ class NavigationBar extends React.Component {
     }
 
     render() {
-        let uname = Utils.getUserName();
+        let uname = Utils.getUser();
         return (
             <Navbar bg="light" expand="lg">
                 <button type="button"
@@ -42,8 +42,7 @@ class NavigationBar extends React.Component {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link href="/home">Home</Nav.Link>
-                        {/*<Nav.Link as={Link} to="/home">Home</Nav.Link>*/}
+                        <Nav.Link as={Link} to="/home">Home</Nav.Link>
                         <Nav.Link onClick={this.goHome}>Another home</Nav.Link>
                         <Nav.Link onClick={()=>{this.props.history.push("/home")}}>Yet another home</Nav.Link>
                     </Nav>
@@ -53,9 +52,8 @@ class NavigationBar extends React.Component {
                 <Nav.Link onClick={this.logout}><FontAwesomeIcon icon={faUser} fixedWidth/>{' '}Выход</Nav.Link>
                 }
                 {!this.props.user &&
-                <Nav.Link href="/login"><FontAwesomeIcon icon={faUser} fixedWidth/>{' '}Вход</Nav.Link>
+                <Nav.Link as={Link} to="/login"><FontAwesomeIcon icon={faUser} fixedWidth/>{' '}Вход</Nav.Link>
                 }
-                {/*<Nav.Link as={Link} to="/login"><FontAwesomeIcon icon={faUser} fixedWidth/>{' '}Вход</Nav.Link>*/}
             </Navbar>
         );
     }
